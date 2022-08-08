@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import AlarmComponent from "../../components/elements/alarm";
 import AlarmForm from "../../components/elements/alarmForm";
+import BaseLayout from "../../components/layout/base";
 import alarmList from "../../utils/dummy";
 
 const Main = styled.div`
@@ -18,19 +19,21 @@ const AlarmList = styled.div`
 
 export default function AlarmPage() {
   return (
-    <Main>
-      <AlarmList>
-        {alarmList.map((alarm) => (
-          <AlarmComponent key={JSON.stringify(alarm)} alarm={alarm} />
-        ))}
-      </AlarmList>
-      <AlarmList>
-        <AlarmForm
-          functionToSubmit={() => {
-            return;
-          }}
-        />
-      </AlarmList>
-    </Main>
+    <BaseLayout showAccount={true}>
+      <Main>
+        <AlarmList>
+          {alarmList.map((alarm) => (
+            <AlarmComponent key={JSON.stringify(alarm)} alarm={alarm} />
+          ))}
+        </AlarmList>
+        <AlarmList>
+          <AlarmForm
+            functionToSubmit={() => {
+              return;
+            }}
+          />
+        </AlarmList>
+      </Main>
+    </BaseLayout>
   );
 }

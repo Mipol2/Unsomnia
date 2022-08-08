@@ -10,10 +10,16 @@ const Main = styled.div`
   width: 100%;
 `;
 
-export default function BaseLayout({ children }: { children?: JSX.Element }) {
+export default function BaseLayout({
+  children,
+  showAccount,
+}: {
+  children?: JSX.Element;
+  showAccount?: boolean;
+}) {
   return (
     <Main>
-      <Header />
+      <Header showAccount={showAccount ?? false} />
       {children}
     </Main>
   );
