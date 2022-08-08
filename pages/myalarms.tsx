@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import AlarmComponent from "../../components/elements/alarm";
-import AlarmForm from "../../components/elements/alarmForm";
-import BaseLayout from "../../components/layout/base";
-import alarmList from "../../utils/dummy";
+import AlarmComponent from "../components/elements/alarm";
+import AlarmForm from "../components/elements/alarmForm";
+import BaseLayout from "../components/layout/base";
+import alarmList from "../utils/dummy";
 
 const Main = styled.div`
   align-items: center;

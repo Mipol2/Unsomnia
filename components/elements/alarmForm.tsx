@@ -72,11 +72,19 @@ export default function AlarmForm({
       <FormStyled onSubmit={(e) => handleSubmit(e)}>
         <InputContainer>
           <label htmlFor="alarmName">Title</label>
-          <input id="alarmName" />
+          <input
+            id="alarmName"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </InputContainer>
         <InputContainer>
           <label htmlFor="alarmDescription">Description</label>
-          <input id="alarmDescription" />
+          <input
+            id="alarmDescription"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
         </InputContainer>
         <RadioContainer>
           <p>Urgency</p>
@@ -89,11 +97,25 @@ export default function AlarmForm({
         </RadioContainer>
         <InputContainer>
           <label htmlFor="alarmHour">Title</label>
-          <input id="alarmHour" type="number" min="0" max="24" />
+          <input
+            id="alarmHour"
+            type="number"
+            min="0"
+            max="24"
+            value={hour}
+            onChange={(e) => setHour(parseInt(e.target.value))}
+          />
         </InputContainer>
         <InputContainer>
           <label htmlFor="alarmMinute">Title</label>
-          <input id="alarmMinute" type="number" min="0" max="60" />
+          <input
+            id="alarmMinute"
+            type="number"
+            min="0"
+            max="60"
+            value={minute}
+            onChange={(e) => setMinute(parseInt(e.target.value))}
+          />
         </InputContainer>
         <button type="submit">Create Alarm</button>
       </FormStyled>
