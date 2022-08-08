@@ -3,11 +3,12 @@ import { Symbol } from "../../types/types";
 
 interface ICardComponent {
   isHidden: boolean;
+  isOpen: boolean;
 }
 
 const Main = styled.div<ICardComponent>`
   align-items: center;
-  background-color: #ffd35c;
+  background-color: ${({ isOpen }) => (isOpen ? "#0784C5" : "#ffd35c")};
   display: flex;
   justify-content: center;
   opacity: ${({ isHidden }) => (isHidden ? 0 : 1)};
@@ -27,7 +28,7 @@ export default function Card({
   onClickFunction: () => void;
 }) {
   return (
-    <Main onClick={onClickFunction} isHidden={isHidden}>
+    <Main onClick={onClickFunction} isHidden={isHidden} isOpen={isOpen}>
       {isOpen ? <p>{shape as string}</p> : <></>}
     </Main>
   );
