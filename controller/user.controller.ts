@@ -2,8 +2,12 @@ import prisma from "../utils/prisma";
 import { NextApiRequest } from "next";
 import {deleteCookie, setCookie} from "cookies-next"
 import createJWT from "../utils/createJWT";
-import { NextApiResponseWithLocals, User } from "../types/types";
+import { NextApiResponseWithLocals, User, UserOpaque } from "../types/types";
 import bcrypt from 'bcrypt';
+
+export async function myInfo (req : NextApiRequest, res : NextApiResponseWithLocals) {
+    return res.status(200).send({message : "User exists", response : res.locals.user as UserOpaque})
+}
 
 export async function login (req : NextApiRequest, res : NextApiResponseWithLocals) {
 
