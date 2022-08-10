@@ -24,13 +24,13 @@ export interface Alarm {
 }
 
 export interface UserOpaque {
+  user_id : number,
   username : string,
   email : string
 }
 
 export interface User extends UserOpaque {
   password : string
-  user_id : number,
 }
 
 export interface NextApiResponseWithLocals extends NextApiResponse {
