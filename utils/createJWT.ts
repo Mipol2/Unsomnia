@@ -1,13 +1,13 @@
 import { NextApiResponse } from "next";
-import type { UserOpaque } from "../types/types"
+import type { User, UserOpaque} from "../types/types"
 import serverConfig from "../config";
 import jwt from 'jsonwebtoken'
 
-function createJWT (user : UserOpaque) {
+function createJWT (user : User) {
     const {keyGeneratingJWT, issuer, expireTime} = serverConfig.jwt;
     const expires = new Date(Date.now() + expireTime)
     try {
-        const token = jwt.sign(user, keyGeneratingJWT, {
+        const token = jwt.sign({...user, password : undefined} as UserOpaque, keyGeneratingJWT, {
             algorithm : "HS256",
             expiresIn : "1d", issuer
         })

@@ -15,7 +15,7 @@ export default async function extractJWT (req : NextApiRequest, res : NextApiRes
         token = token as string;
         jwt.verify(token, keyGeneratingJWT, (error, user) => {
             if (!error) {
-                res.locals.user = user;
+                res.locals.user = user as UserOpaque;
             } else { 
                 res.locals.user = undefined;
             }
