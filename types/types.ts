@@ -20,3 +20,13 @@ export interface Alarm {
     hour : number,
     minute : number
 }
+
+export interface UserOpaque {
+  username : string,
+  email : string
+}
+
+export interface User extends UserOpaque {
+  password : string
+  user_id : number,
+}
