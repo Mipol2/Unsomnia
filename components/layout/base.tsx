@@ -6,8 +6,17 @@ const Main = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
+  min-height: 100vh;
+`;
+
+const ChildrenContainer = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
 `;
 
 export default function BaseLayout({
@@ -20,7 +29,7 @@ export default function BaseLayout({
   return (
     <Main>
       <Header showAccount={showAccount ?? false} />
-      {children}
+      <ChildrenContainer>{children}</ChildrenContainer>
     </Main>
   );
 }
