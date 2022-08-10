@@ -38,18 +38,18 @@ export default function AlarmForm({
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [urgency, setUrgency] = useState("low" as Urgency);
-  const [hour, setHour] = useState(0);
-  const [minute, setMinute] = useState(0);
+  const [hour, setHour] = useState("");
+  const [minute, setMinute] = useState("");
 
   useEffect(() => {
-    if (hour >= 24 || hour < 0) {
-      setHour(0);
+    if (parseInt(hour) >= 24 || parseInt(hour) < 0) {
+      setHour("0");
     }
   }, [hour]);
 
   useEffect(() => {
-    if (minute >= 60 || minute < 0) {
-      setMinute(0);
+    if (parseInt(minute) >= 60 || parseInt(minute) < 0) {
+      setMinute("0");
     }
   }, [minute]);
 
@@ -58,8 +58,8 @@ export default function AlarmForm({
     const createdAlarm = {
       Title: title,
       Description: description,
-      Hour: hour,
-      Minute: minute,
+      Hour: parseInt(hour),
+      Minute: parseInt(minute),
       Difficulty: urgency,
     } as Alarm;
 
@@ -89,9 +89,15 @@ export default function AlarmForm({
           <p>Urgency</p>
           <Spacer />
           <RadioContainer>
-            <button onClick={() => setUrgency("low")}>Low</button>
-            <button onClick={() => setUrgency("med")}>Med</button>
-            <button onClick={() => setUrgency("high")}>High</button>
+            <button type="button" onClick={() => setUrgency("low")}>
+              Low
+            </button>
+            <button type="button" onClick={() => setUrgency("med")}>
+              Med
+            </button>
+            <button type="button" onClick={() => setUrgency("high")}>
+              High
+            </button>
           </RadioContainer>
         </RadioContainer>
         <InputContainer>
@@ -102,7 +108,7 @@ export default function AlarmForm({
             min="0"
             max="24"
             value={hour}
-            onChange={(e) => setHour(parseInt(e.target.value))}
+            onChange={(e) => setHour(e.target.value)}
           />
         </InputContainer>
         <InputContainer>
@@ -113,7 +119,7 @@ export default function AlarmForm({
             min="0"
             max="60"
             value={minute}
-            onChange={(e) => setMinute(parseInt(e.target.value))}
+            onChange={(e) => setMinute(e.target.value)}
           />
         </InputContainer>
         <button type="submit">Create Alarm</button>

@@ -16,16 +16,16 @@ export async function myAlarm (req : NextApiRequest, res : NextApiResponseWithLo
 
 export async function createAlarm (req : NextApiRequest, res : NextApiResponseWithLocals) {
     const {user_id} = res.locals.user as UserOpaque
-    const {title, description, urgency, hour, minute} = req.body;
+    const {Title, Description, Difficulty, Hour, Minute} = req.body;
 
     const createdAlarm = await prisma.alarm.create({
         data : {
             owner_id : user_id,
-            Title : title,
-            Description : description,
-            Difficulty : urgency,
-            Minute : minute,
-            Hour : hour
+            Title,
+            Description,
+            Difficulty,
+            Minute,
+            Hour 
         }
     })
 

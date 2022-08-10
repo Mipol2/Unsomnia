@@ -1,6 +1,8 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FormEvent, useState } from "react";
 import styled from "styled-components";
 import BaseLayout from "../components/layout/base";
+import { register } from "../utils/api";
 
 const Main = styled.div``;
 
@@ -22,13 +24,34 @@ const InputContainer = styled.div`
 `;
 
 export default function Register() {
+  const queryClient = useQueryClient();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checkerPassword, setCheckerPassword] = useState("");
 
-  function handleRegister(e: FormEvent) {
+  const {
+    isError,
+    error,
+    mutateAsync: registerAndMutate,
+  } = useMutation(register, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["me"]);
+      window.location.href = "./";
+    },
+    onError: () => {
+      setUsername("");
+      setPassword("");
+      setEmail("");
+      setCheckerPassword("");
+    },
+  });
+
+  async function handleRegister(e: FormEvent) {
     e.preventDefault();
+    if (password === checkerPassword) {
+      await registerAndMutate({ username, email, password });
+    }
   }
 
   return (
