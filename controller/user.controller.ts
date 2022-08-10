@@ -3,7 +3,6 @@ import { NextApiRequest } from "next";
 import {deleteCookie, setCookie} from "cookies-next"
 import createJWT from "../utils/createJWT";
 import { NextApiResponseWithLocals, UserOpaque } from "../types/types";
-import serverConfig from "../config";
 import bcrypt from 'bcrypt';
 
 export async function login (req : NextApiRequest, res : NextApiResponseWithLocals) {
@@ -78,13 +77,6 @@ export async function register (req : NextApiRequest, res : NextApiResponseWithL
 }
 
 export async function logout (req : NextApiRequest, res : NextApiResponseWithLocals) {
-    console.log("Entering logout");
-
     deleteCookie("token", {req, res});
-    
-    res.status(200).send({message : "Logout succesful"});
-
-    console.log("Logout response sent");
-
-    return;
+    return res.status(200).send({message : "Logout succesful"});
 }

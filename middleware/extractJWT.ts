@@ -10,8 +10,6 @@ export default async function extractJWT (req : NextApiRequest, res : NextApiRes
     const {jwt : {keyGeneratingJWT}, cookieSettings} = serverConfig;
     let token = req.cookies.token;
 
-    console.log(token);
-
     res.locals = {};
     if (token) {
         token = token as string;
@@ -21,12 +19,10 @@ export default async function extractJWT (req : NextApiRequest, res : NextApiRes
             } else { 
                 res.locals.user = undefined;
             }
-            console.log("Passed JWT extraction");
-            return next();
         }) 
+        return next();
     }
 
     res.locals.user = undefined;
-    console.log("Passed JWT extraction");
     return next();
 }
