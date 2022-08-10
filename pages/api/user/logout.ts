@@ -1,15 +1,11 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import {deleteCookie} from "cookies-next"
-import checkIfLoggedIn from "../../../utils/checkIfLoggedIn";
-import serverConfig from "../../../config";
+import { NextApiRequest } from "next";
+import { NextApiResponseWithLocals } from "../../../types/types";
+import {createRouter} from "next-connect";
+import { logout } from "../../../controller/user.controller";
+import loginStatus from "../../../middleware/loginStatus";
+import extractJWT from "../../../middleware/extractJWT";
 
-export default async function handler (req : NextApiRequest, res : NextApiResponse) {
-    if (!await checkIfLoggedIn(req)) {
-        res.status(401).send({error : "notLoggedIn", message : "You're not logged in!"})
-    }
+const router = createRouter<NextApiRequest, NextApiResponseWithLocals>()
+router.use(extractJWT).use(loginStatus(true)).post(logout);
 
-    deleteCookie("token", serverConfig.cookieSettings);
-    
-
-    return res.status(200).send({message : "Logout succesful"})
-}
+export default router.handler();
