@@ -25,13 +25,17 @@ const Home: NextPage = () => {
     retry: 1,
   });
 
-  if (status === "error" || status === "success") {
+  if (status === "success") {
+    window.location.href = "/alarms";
+  }
+
+  if (status === "error") {
     return (
       <BaseLayout>
         <Container>
           <h2>Insomnia?</h2>
           <h3>We can help with that</h3>
-          <button>Join Now</button>
+          <a href={"/login"}>Join Now</a>
         </Container>
       </BaseLayout>
     );

@@ -55,7 +55,13 @@ function AccountButton() {
 export default function Header({ showAccount }: { showAccount: boolean }) {
   return (
     <Main>
-      <h1>Unsomnia</h1>
+      <h1
+        onClick={() => {
+          window.location.href = "./";
+        }}
+      >
+        Unsomnia
+      </h1>
       <Spacer />
       {/* <FontAwesomeIcon icon={faCircleUser} fontSize={"2em"} /> */}
       {showAccount ? <AccountButton /> : null}

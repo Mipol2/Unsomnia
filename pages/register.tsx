@@ -71,7 +71,7 @@ export default function Register() {
             <button type="submit">Register</button>
           </FormStyled>
           <p>
-            Already have an account? <a>Log In</a>
+            Already have an account? <a href="./login">Log In</a>
           </p>
         </FormContainer>
       </Main>
