@@ -1,6 +1,9 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FormEvent, useState } from "react";
 import styled from "styled-components";
 import BaseLayout from "../components/layout/base";
+import { UserLogin } from "../types/types";
+import { login } from "../utils/api";
 
 const Main = styled.div``;
 
@@ -26,18 +29,37 @@ const Spacer = styled.div`
 `;
 
 export default function Login() {
+  const queryClient = useQueryClient();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleRegister(e: FormEvent) {
+  const {
+    data,
+    isError,
+    error,
+    isLoading,
+    mutateAsync: loginAndMutate,
+  } = useMutation(login, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["me"]);
+      window.location.href = "./";
+    },
+    onError: () => {
+      setUsername("");
+      setPassword("");
+    },
+  });
+
+  async function handleLogin(e: FormEvent) {
     e.preventDefault();
+    await loginAndMutate({ username, password });
   }
 
   return (
     <BaseLayout>
       <Main>
         <FormContainer>
-          <FormStyled onSubmit={(e) => handleRegister(e)}>
+          <FormStyled onSubmit={(e) => handleLogin(e)}>
             <InputContainer>
               <label htmlFor="username">Username</label>
               <input

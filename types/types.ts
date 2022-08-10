@@ -15,12 +15,17 @@ const possibleUrgencyList = ["low", "med", "high"] as const;
 export type Urgency = typeof possibleUrgencyList[number];
 
 export interface Alarm {
-    id : number,
-    title : string,
-    description : string,
-    urgency : Urgency,
-    hour : number,
-    minute : number
+    alarm_id : number,
+    Title : string,
+    Description : string,
+    Difficulty : Urgency,
+    Hour : number,
+    Minute : number
+}
+
+export interface UserLogin {
+  username : string,
+  password : string
 }
 
 export interface UserOpaque {

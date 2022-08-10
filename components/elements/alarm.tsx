@@ -25,7 +25,13 @@ const Spacer = styled.div`
 `;
 
 export default function AlarmComponent({
-  alarm: { title, description, urgency, minute, hour },
+  alarm: {
+    Title: title,
+    Description: description,
+    Difficulty: urgency,
+    Minute: minute,
+    Hour: hour,
+  },
 }: {
   alarm: Alarm;
 }) {

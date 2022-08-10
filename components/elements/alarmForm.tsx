@@ -56,12 +56,11 @@ export default function AlarmForm({
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const createdAlarm = {
-      id: 90,
-      title,
-      description,
-      hour,
-      minute,
-      urgency,
+      Title: title,
+      Description: description,
+      Hour: hour,
+      Minute: minute,
+      Difficulty: urgency,
     } as Alarm;
 
     functionToSubmit(createdAlarm);

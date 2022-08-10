@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { logout } from "../../utils/api";
 
 interface IDropdown {
   show: boolean;
@@ -15,6 +17,10 @@ const Main = styled.div`
   justify-content: center;
   padding: 0 1em;
   width: 100%;
+`;
+
+const Heading = styled.h1`
+  /* border: solid 1px white; */
 `;
 
 const Spacer = styled.div`
@@ -37,6 +43,19 @@ const Dropdown = styled.div<IDropdown>`
 `;
 
 function AccountButton() {
+  const queryClient = useQueryClient();
+  const {
+    data,
+    isError,
+    error,
+    isLoading,
+    mutateAsync: logoutAndMutate,
+  } = useMutation(logout, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["me"]);
+      window.location.href = "./";
+    },
+  });
   const [showDropdown, setShowDropdown] = useState(false);
   return (
     <DropdownContainer>
@@ -46,7 +65,7 @@ function AccountButton() {
         <FontAwesomeIcon icon={faCircleUser} fontSize={"2em"} />
       </ButtonStyled>
       <Dropdown show={showDropdown}>
-        <p>Logout</p>
+        <p onClick={() => logoutAndMutate()}>Logout</p>
       </Dropdown>
     </DropdownContainer>
   );
@@ -55,13 +74,13 @@ function AccountButton() {
 export default function Header({ showAccount }: { showAccount: boolean }) {
   return (
     <Main>
-      <h1
+      <Heading
         onClick={() => {
           window.location.href = "./";
         }}
       >
         Unsomnia
-      </h1>
+      </Heading>
       <Spacer />
       {/* <FontAwesomeIcon icon={faCircleUser} fontSize={"2em"} /> */}
       {showAccount ? <AccountButton /> : null}
