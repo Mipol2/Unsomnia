@@ -5,8 +5,12 @@ import createJWT from "../../../utils/createJWT";
 import { UserOpaque } from "../../../types/types";
 import serverConfig from "../../../config";
 import bcrypt from 'bcrypt';
+import checkIfLoggedIn from "../../../utils/checkIfLoggedIn";
 
 export default async function handler (req : NextApiRequest, res : NextApiResponse) {
+    if (await checkIfLoggedIn(req)) {
+        res.status(401).send({error : "loggedIn", message : "You're already logged in!"})
+    }
     const {username, email, password} = req.body;
 
     const getUser = await prisma.user.findMany({
