@@ -16,6 +16,8 @@ model User {
   email    String
   password String
   alarms   Alarm[]
+
+  @@unique([user_id, username])
 }
 
 model Alarm {
