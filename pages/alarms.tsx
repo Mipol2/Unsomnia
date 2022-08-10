@@ -5,8 +5,7 @@ import AlarmForm from "../components/elements/alarmForm";
 import LoadingRotation from "../components/elements/loading";
 import BaseLayout from "../components/layout/base";
 import { Alarm } from "../types/types";
-import { addAlarm, getMyAlarm } from "../utils/api";
-import alarmList from "../utils/dummy";
+import { addAlarm, deleteAlarm, getMyAlarm } from "../utils/api";
 
 const Main = styled.div`
   align-items: center;
@@ -37,6 +36,12 @@ export default function AlarmPage() {
     },
   });
 
+  const { mutateAsync: deleteAlarmAndMutate } = useMutation(deleteAlarm, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["myAlarms"]);
+    },
+  });
+
   if (status === "loading") {
     return <LoadingRotation />;
   }
@@ -50,11 +55,17 @@ export default function AlarmPage() {
       <Main>
         <AlarmList>
           {(alarmList ?? []).map((alarm) => (
-            <AlarmComponent key={JSON.stringify(alarm)} alarm={alarm} />
+            <AlarmComponent
+              key={JSON.stringify(alarm)}
+              alarm={alarm}
+              functionToDelete={async () =>
+                deleteAlarmAndMutate(alarm.alarm_id)
+              }
+            />
           ))}
         </AlarmList>
         <AlarmList>
-          <AlarmForm functionToSubmit={addAlarmAndMutate} />
+          <AlarmForm functionToAdd={addAlarmAndMutate} />
         </AlarmList>
       </Main>
     </BaseLayout>

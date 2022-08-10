@@ -51,3 +51,13 @@ export async function addAlarm (alarmToAdd : Alarm) {
     return serverResponse.data.response;
 
 }
+
+export async function deleteAlarm (alarmId : number) {
+    const serverResponse = await axios.delete("/api/alarm/delete", {...apiOPTIONS, data : {alarmId}});
+
+    return serverResponse.data.response;
+
+}
+
+
+

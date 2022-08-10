@@ -32,8 +32,10 @@ export default function AlarmComponent({
     Minute: minute,
     Hour: hour,
   },
+  functionToDelete,
 }: {
   alarm: Alarm;
+  functionToDelete: () => void;
 }) {
   return (
     <Main>
@@ -48,6 +50,7 @@ export default function AlarmComponent({
         </h3>
         <h4>{urgency}</h4>
       </InfoContainer>
+      <button onClick={functionToDelete}>Delete</button>
     </Main>
   );
 }

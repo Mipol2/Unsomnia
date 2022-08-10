@@ -31,9 +31,9 @@ const Spacer = styled.div`
 `;
 
 export default function AlarmForm({
-  functionToSubmit,
+  functionToAdd,
 }: {
-  functionToSubmit: (arg1: Alarm) => void;
+  functionToAdd: (arg1: Alarm) => void;
 }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -63,7 +63,7 @@ export default function AlarmForm({
       Difficulty: urgency,
     } as Alarm;
 
-    functionToSubmit(createdAlarm);
+    functionToAdd(createdAlarm);
   }
 
   return (
