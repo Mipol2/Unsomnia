@@ -76,10 +76,10 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </InputContainer>
-            <button type="submit">Log In</button>
+            <button type="submit" style={{background:'yellow', borderRadius:'16px'}}>Log In</button>
           </FormStyled>
           <p style={{color:'white'}}>
-            Don&apos;t have an account yet? <a href="./register" style={{color:'white'}}>Register</a>
+            Don&apos;t have an account yet? <a href="./register" style={{color:'white', textDecoration:'underline'}}>Register</a>
           </p>
         </FormContainer>
       </Main>
