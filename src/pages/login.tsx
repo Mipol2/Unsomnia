@@ -69,14 +69,14 @@ export default function Login() {
               />
             </InputContainer>
             <InputContainer>
-              <label htmlFor="password" style={{color:'white'}}>Password</label>
+              <label htmlFor="password" style={{color:'white', marginTop:'0.5rem'}}>Password</label>
               <input
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </InputContainer>
-            <button type="submit" style={{background:'yellow', borderRadius:'16px'}}>Log In</button>
+            <button type="submit" style={{background:'yellow', borderRadius:'16px', alignSelf:'center', width:'100%', marginTop:'0.5rem'}}>Log In</button>
           </FormStyled>
           <p style={{color:'white'}}>
             Don&apos;t have an account yet? <a href="./register" style={{color:'white', textDecoration:'underline'}}>Register</a>
