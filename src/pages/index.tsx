@@ -35,7 +35,7 @@ const Home: NextPage = () => {
         <Container>
           <h2>Insomnia?</h2>
           <h3>We can help with that</h3>
-          <a href={"/login"}>Join Now</a>
+          <a href={"/login"} style={{background: 'yellow', borderRadius:'16px', height:'100%', width:'100%', textAlign:'center'}}>Join Now</a>
         </Container>
       </BaseLayout>
     );
