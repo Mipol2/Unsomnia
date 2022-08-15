@@ -61,7 +61,7 @@ export default function Login() {
         <FormContainer>
           <FormStyled onSubmit={(e) => handleLogin(e)}>
             <InputContainer>
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username" style={{color:'white'}}>Username</label>
               <input
                 id="username"
                 value={username}
@@ -69,17 +69,17 @@ export default function Login() {
               />
             </InputContainer>
             <InputContainer>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password" style={{color:'white', marginTop:'0.5rem'}}>Password</label>
               <input
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </InputContainer>
-            <button type="submit">Log In</button>
+            <button type="submit" style={{background:'yellow', borderRadius:'16px', alignSelf:'center', width:'100%', marginTop:'0.5rem'}}>Log In</button>
           </FormStyled>
-          <p>
-            Don&apos;t have an account yet? <a href="./register">Register</a>
+          <p style={{color:'white'}}>
+            Don&apos;t have an account yet? <a href="./register" style={{color:'white', textDecoration:'underline'}}>Register</a>
           </p>
         </FormContainer>
       </Main>

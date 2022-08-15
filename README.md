@@ -16,6 +16,10 @@
 |Nabilah Amanda Putri|16521511| |
 |Aniqa Fayyaza Akbar|16521519| |
 
+Judul Solusi : Final Solution to The Sleep Question
+Nomor Kelompok : 22
+Nama Kelompok : Healthy Sleep Enjoyer
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
