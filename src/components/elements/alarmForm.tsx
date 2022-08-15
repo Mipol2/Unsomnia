@@ -70,7 +70,7 @@ export default function AlarmForm({
     <Main>
       <FormStyled onSubmit={(e) => handleSubmit(e)}>
         <InputContainer>
-          <label htmlFor="alarmName">Title</label>
+          <label htmlFor="alarmName" style={{color:'white'}}>Title</label>
           <input
             id="alarmName"
             value={title}
@@ -78,7 +78,7 @@ export default function AlarmForm({
           />
         </InputContainer>
         <InputContainer>
-          <label htmlFor="alarmDescription">Description</label>
+          <label htmlFor="alarmDescription" style={{color:'white'}}>Description</label>
           <input
             id="alarmDescription"
             value={description}
@@ -101,7 +101,7 @@ export default function AlarmForm({
           </RadioContainer>
         </RadioContainer>
         <InputContainer>
-          <label htmlFor="alarmHour">Title</label>
+          <label htmlFor="alarmHour" style={{color:'white'}}>Title</label>
           <input
             id="alarmHour"
             type="number"
@@ -112,7 +112,7 @@ export default function AlarmForm({
           />
         </InputContainer>
         <InputContainer>
-          <label htmlFor="alarmMinute">Title</label>
+          <label htmlFor="alarmMinute" style={{color:'white'}}>Title</label>
           <input
             id="alarmMinute"
             type="number"
