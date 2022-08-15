@@ -33,9 +33,9 @@ const Home: NextPage = () => {
     return (
       <BaseLayout>
         <Container>
-          <h2>Insomnia?</h2>
-          <h3>We can help with that</h3>
           <a href={"/login"} style={{background: 'yellow', borderRadius:'16px', height:'70px', width:'100%', textAlign:'center', font: 'Averia Serif Libre'}}>Join Now</a>
+          <h2 style={{font:'Averia Serif Libre'}}>Insomnia?</h2>
+          <h3 style={{font:'Averia Serif Libre'}}>We can help with that</h3>
         </Container>
       </BaseLayout>
     );
